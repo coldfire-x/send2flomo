@@ -1,7 +1,9 @@
-# Chrome Extension TypeScript Starter
+# what's this repo for ?
+i'am wondering what we can do with chatgpt, can we use it to accelerate develop process? 
+the answer is indeed, with chatgpt's help, at most 6 hours, i developed this google chrome extension, now it can
+save chatgpt chat messages to flomo, to prove my assumption.
 
-![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
-
+# Chrome Extension To send chatgpt chat message to flomo
 Chrome Extension, TypeScript and Visual Studio Code
 
 ## Prerequisites
