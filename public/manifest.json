@@ -10,22 +10,31 @@
   },
 
   "action": {
-    "default_icon": "icon.png",
+    "default_icon": "images/icon.png",
     "default_popup": "popup.html"
+  },
+
+  "background": {
+    "service_worker": "js/background.js"
   },
 
   "content_scripts": [
       {
           "matches": ["<all_urls>"],
-          "js": ["js/vendor.js"]
+          "js": ["./js/vendor.js", "./js/content_script.js"],
+          "run_at": "document_end"
       }
   ],
 
   "permissions": [
-    "storage"
+    "storage", "activeTab"
   ],
 
   "host_permissions": [
     "<all_urls>"
-  ]
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }

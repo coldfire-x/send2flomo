@@ -2,12 +2,13 @@ const webpack = require("webpack");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const srcDir = path.join(__dirname, "..", "src");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
         popup: path.join(srcDir, 'ts/popup.tsx'),
         options: path.join(srcDir, 'ts/options.tsx'),
+        background: path.join(srcDir, 'ts/background.tsx'),
+        content_script: path.join(srcDir, 'ts/content_script.tsx'),
     },
     output: {
         path: path.join(__dirname, "../dist/"),
@@ -29,8 +30,8 @@ module.exports = {
                 exclude: /node_modules/,
             }, {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
-            }
+                use: ['style-loader', 'css-loader'],
+            },
         ],
     },
     resolve: {
@@ -38,11 +39,10 @@ module.exports = {
     },
     plugins: [
         new CopyPlugin({
-            patterns: [{ from: "./", to: "../dist/", context: "public" }],
+            patterns: [
+                { from: "./", to: "../dist/", context: "public" },
+            ],
             options: {},
-        }),
-        new MiniCssExtractPlugin({
-            filename: 'styles.css', // 指定输出的 CSS 文件名
         })
     ],
 };
